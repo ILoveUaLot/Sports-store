@@ -2,7 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,10 +16,13 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
+app.UseDeveloperExceptionPage();
+app.UseStatusCodePages();
 
+app.UseRouting();
 app.UseAuthorization();
 
+app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
 app.MapRazorPages();
 
 app.Run();
