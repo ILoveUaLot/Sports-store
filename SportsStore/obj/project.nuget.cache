@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Sh6cdkypVWni9CZVvQjtT6AVty6YxEOK89dcKuop7Ug9jW/dGP6drUcNegYWQ1mCq/d/6V3Z+OQBfmWrGyNJMQ==",
+  "dgSpecHash": "mqRpJJO1UHI8Hau1a232dbMioQvLmiGYAtOcaylpNt9Q9EGQtrDdZlV/jYUhMkKqDbBNpIMadBrIaO7XYMTylQ==",
   "success": true,
   "projectFilePath": "D:\\TrainingProjects\\SportsSln\\SportsStore\\SportsStore.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\dimal\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
+    "C:\\Users\\dimal\\.nuget\\packages\\moq\\4.18.4\\moq.4.18.4.nupkg.sha512",
+    "C:\\Users\\dimal\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
