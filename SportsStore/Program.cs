@@ -1,8 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using SportsStore.Models;
 
+var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
+
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<StoreDbContext>(opts =>
+{
+    opts.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionStrings:SprotsStoreConnection"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
