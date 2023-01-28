@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6fYp8ZFkPCx0GVFuSt5Iv2xz8t3sP/q66RDHX4KLEfNbwxOkXmcHe/gjAukYYIeeTK14pU6yvd9q9E8VWLFvkA==",
+  "dgSpecHash": "27nuh6AbTHeJj2IPaj+n8dbXwVGk+o4NJuXZUG8FDHS0DhU0oIFjL1jbdtB8lZrhNW8kMhMnXiIAORTHjnKpHQ==",
   "success": true,
   "projectFilePath": "D:\\TrainingProjects\\SportsSln\\SportsStore\\SportsStore.csproj",
   "expectedPackageFiles": [
@@ -18,6 +18,7 @@
     "C:\\Users\\dimal\\.nuget\\packages\\microsoft.entityframeworkcore.design\\7.0.2\\microsoft.entityframeworkcore.design.7.0.2.nupkg.sha512",
     "C:\\Users\\dimal\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\7.0.2\\microsoft.entityframeworkcore.relational.7.0.2.nupkg.sha512",
     "C:\\Users\\dimal\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.2\\microsoft.entityframeworkcore.sqlserver.7.0.2.nupkg.sha512",
+    "C:\\Users\\dimal\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\7.0.2\\microsoft.entityframeworkcore.tools.7.0.2.nupkg.sha512",
     "C:\\Users\\dimal\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\dimal\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\dimal\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
