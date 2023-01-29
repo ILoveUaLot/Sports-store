@@ -34,4 +34,5 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
 app.MapRazorPages();
 
+SeedData.EnsurePopulated(app);
 app.Run();
