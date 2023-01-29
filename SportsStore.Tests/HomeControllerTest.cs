@@ -3,6 +3,7 @@ using Xunit;
 using SportsStore;
 using Moq;
 using SportsStore.Models;
+using SportsStore.Controllers;
 
 public class HomeControllerTest
 {
@@ -15,5 +16,9 @@ public class HomeControllerTest
             new Product {ProductID = 1, Name = "P1"},
             new Product {ProductID = 2, Name = "P2"}
         }).AsQueryable<Product>());
+
+        HomeController controller = new HomeController(mock.Object);
+
+        
     }
 }
