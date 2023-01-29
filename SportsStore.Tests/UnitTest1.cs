@@ -1,5 +1,6 @@
 namespace SportsStore.Tests;
-
+using Xunit;
+using SportsStore;
 public class UnitTest1
 {
     [Fact]
