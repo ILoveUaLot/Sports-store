@@ -1,7 +1,7 @@
 namespace SportsStore.Tests;
 using Xunit;
 using SportsStore;
-public class UnitTest1
+public class HomeControllerTest
 {
     [Fact]
     public void Test1()
