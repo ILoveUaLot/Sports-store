@@ -6,7 +6,7 @@ namespace SportsStore.Controllers
     public class HomeController : Controller
     {
         private IStoreRepository repository;
-        public int PageSize = 4;
+        public int PageSize = 4; //count of product on page
         public HomeController(IStoreRepository repo)
         {
             repository = repo;
