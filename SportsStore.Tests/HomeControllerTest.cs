@@ -60,4 +60,23 @@ public class HomeControllerTest
         Assert.Equal("P4", prodArray[0].Name);
         Assert.Equal("P5", prodArray[1].Name);
     }
+    
+    [Fact]
+    public void Can_Send_Pagination_View_Model()
+    {
+        //Arrange
+        Mock<IStoreRepository> mock = new Mock<IStoreRepository>();
+        mock.Setup(m => m.Products).Returns((new Product[]
+        {
+            new Product {ProductID = 1, Name = "P1"},
+            new Product {ProductID = 2, Name = "P2"},
+            new Product {ProductID = 3, Name = "P3"},
+            new Product {ProductID = 4, Name = "P4"},
+            new Product {ProductID = 5, Name = "P5"}
+        }).AsQueryable<Product>());
+
+        //Arrange
+        HomeController controller = new HomeController(mock.Object) { PageSize= 3};
+
+    }
 }
