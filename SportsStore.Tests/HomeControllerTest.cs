@@ -5,6 +5,7 @@ using Moq;
 using SportsStore.Models;
 using SportsStore.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using SportsStore.Models.ViewModels;
 
 public class HomeControllerTest
 {
@@ -78,6 +79,15 @@ public class HomeControllerTest
         //Arrange
         HomeController controller = new HomeController(mock.Object) { PageSize= 3};
 
+        //Act
+        ProductsListViewModel result =
+            controller.Index(2)?.ViewData.Model as ProductsListViewModel ?? new();
 
+        //Assert
+        PagingInfo pageInfo = result.PagingInfo;
+        Assert.Equal(2, pageInfo.CurrentPage);
+        Assert.Equal(3, pageInfo.ItemsPerPage);
+        Assert.Equal(5,pageInfo.TotalItems);
+        Assert.Equal(2, pageInfo.TotalPages);
     }
 }
