@@ -1,4 +1,4 @@
-﻿@model IQueryable<Product>
+﻿@model ProductsListViewModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,7 @@
     <title></title>
 </head>
 <body>
-    @foreach(var p in Model ?? Enumerable.Empty<Product>())
+    @foreach(var p in Model?.Products ?? Enumerable.Empty<Product>())
     {
         <div>
             <h3>@p.Name</h3>
