@@ -50,7 +50,7 @@ namespace SportsStore.Tests
                 (cache, encoder) => Task.FromResult(content.Object));
 
             //Act
-            
+            helper.Process(ctx, output);
         }
     }
 }
