@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -26,7 +27,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.MapControllerRoute("pagination",
+    "Products/Page{productPage}",
+    new {Controller = "Home", action = "Index"});
 app.UseDeveloperExceptionPage();
 app.UseStatusCodePages();
 
