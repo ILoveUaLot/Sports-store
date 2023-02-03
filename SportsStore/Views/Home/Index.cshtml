@@ -8,7 +8,7 @@
 <body>
     @foreach(var p in Model?.Products ?? Enumerable.Empty<Product>())
     {
-        <partial name="ProductSummary.cshtml" model="p"></partial>
+        <partial name="/Views/Shared/ProductSummary.cshtml" model="p" />
     }
 
     <div page-class-enabled="true" page-class="btn" page-class-normal="btn-outline-dark"
