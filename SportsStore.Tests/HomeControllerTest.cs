@@ -90,4 +90,22 @@ public class HomeControllerTest
         Assert.Equal(5,pageInfo.TotalItems);
         Assert.Equal(2, pageInfo.TotalPages);
     }
+
+    [Fact]
+    public void Can_Filter_Products()
+    {
+        //Arrange
+        Mock<IStoreRepository> mock = new Mock<IStoreRepository>();
+        mock.Setup(m=>m.Products).Returns(new Product[]
+        {
+            new Product {ProductID = 1,Category="Cat1", Name="P1"},
+            new Product {ProductID = 2,Category="Cat2", Name="P2"},
+            new Product {ProductID=3,Category="Cat3", Name="P3"},
+            new Product {ProductID=4,Category="Cat4", Name="P4"},
+            new Product {ProductID=5,Category="Cat5", Name="P5"}
+        }.AsQueryable<Product>());
+
+        //Act
+        Controller controller = new HomeController(mock.Object);
+    }
 }
