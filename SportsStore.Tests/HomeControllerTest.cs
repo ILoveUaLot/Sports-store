@@ -100,16 +100,20 @@ public class HomeControllerTest
         {
             new Product {ProductID = 1,Category="Cat1", Name="P1"},
             new Product {ProductID = 2,Category="Cat2", Name="P2"},
-            new Product {ProductID=3,Category="Cat3", Name="P3"},
-            new Product {ProductID=4,Category="Cat4", Name="P4"},
+            new Product {ProductID=3,Category="Cat2", Name="P3"},
+            new Product {ProductID=4,Category="Cat3", Name="P4"},
             new Product {ProductID=5,Category="Cat5", Name="P5"}
         }.AsQueryable<Product>());
 
         HomeController controller = new HomeController(mock.Object);
-
+        controller.PageSize= 3;
         //Act
         Product[] result = (controller.Index("Cat2", 1)?.ViewData.Model
                                             as ProductsListViewModel ?? new()).Products.ToArray();
 
+        //Assert
+        Assert.Equal(2, result.Length);
+        Assert.True(result[0].Category == "Cat2" && result[0].Name == "P2");
+        Assert.True(result[1].Category == "Cat2" && result[1].Name == "P3");
     }
 }
