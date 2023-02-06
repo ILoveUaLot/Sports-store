@@ -105,7 +105,11 @@ public class HomeControllerTest
             new Product {ProductID=5,Category="Cat5", Name="P5"}
         }.AsQueryable<Product>());
 
+        HomeController controller = new HomeController(mock.Object);
+
         //Act
-        Controller controller = new HomeController(mock.Object);
+        Product[] result = (controller.Index("Cat2", 1)?.ViewData.Model
+                                            as ProductsListViewModel ?? new()).Products.ToArray();
+
     }
 }
