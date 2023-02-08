@@ -33,6 +33,13 @@ namespace SportsStore.Tests
             //Act
             string[] result = ((IEnumerable<string>?)(target.Invoke() as ViewViewComponentResult)?
                                 .ViewData?.Model ?? Enumerable.Empty<string>()).ToArray();
+            //Assert
+            Assert.True(Enumerable.SequenceEqual(new string[]
+            {
+                "Apples",
+                "Oranges",
+                "Plums"
+            }, result));
         }
     }
 }
