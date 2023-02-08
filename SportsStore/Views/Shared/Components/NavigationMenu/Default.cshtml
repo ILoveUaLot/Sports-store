@@ -1,13 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<string>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-</head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
-</html>
+<div class="d-grid gap-2">
+    <a class=" btn btn-outline-secondary" asp-action="Index"
+        asp-controller="Home" asp-route-category="">Home
+    </a>
+
+    @foreach (string category in Model ?? Enumerable.Empty<string>())
+    {
+        <a class="btn btn-outline-secondary"
+            asp-action="Index" asp-controller="Home"
+            asp-route-category="@category"
+            asp-route-productPage="1">
+            @category
+        </a>
+    }
+</div>
