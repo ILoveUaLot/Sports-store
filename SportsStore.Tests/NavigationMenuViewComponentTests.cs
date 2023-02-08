@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Moq;
 using SportsStore.Components;
 using SportsStore.Controllers;
@@ -28,6 +29,10 @@ namespace SportsStore.Tests
             }).AsQueryable<Product>());
 
             NavigationMenuViewComponent target = new NavigationMenuViewComponent(mock.Object);
+
+            //Act
+            string[] result = ((IEnumerable<string>?)(target.Invoke() as ViewViewComponentResult)?
+                                .ViewData?.Model ?? Enumerable.Empty<string>()).ToArray();
         }
     }
 }
