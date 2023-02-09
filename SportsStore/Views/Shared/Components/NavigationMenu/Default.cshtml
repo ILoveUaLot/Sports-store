@@ -1,11 +1,11 @@
-﻿@model IEnumerable<string>
+﻿@model CategoryRouteDataModel
 
 <div class="d-grid gap-2">
     <a class=" btn btn-outline-secondary" asp-action="Index"
         asp-controller="Home" asp-route-category="">Home
     </a>
 
-    @foreach (string category in Model ?? Enumerable.Empty<string>())
+    @foreach (string category in Model?.Categories ?? Enumerable.Empty<string>())
     {
         <a class="btn btn-outline-secondary"
             asp-action="Index" asp-controller="Home"
