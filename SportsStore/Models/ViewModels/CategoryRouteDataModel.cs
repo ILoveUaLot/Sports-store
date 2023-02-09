@@ -6,7 +6,7 @@ namespace SportsStore.Models.ViewModels
     {
         public IEnumerable<string>? Categories { get; set; }
 
-        public string? RoutePath { get; set; }
+        public object? RoutePath { get; set; }
         
     }
 }
