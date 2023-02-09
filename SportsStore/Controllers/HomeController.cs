@@ -21,13 +21,13 @@ namespace SportsStore.Controllers
                             .OrderBy(p => p.ProductID)
                             .Skip((productPage-1)*PageSize)
                             .Take(PageSize),
-                        PagingInfo = new PagingInfo
-                        {
-                            CurrentPage= productPage,
-                            ItemsPerPage=PageSize,
-                            TotalItems = repository.Products.Count()
-                        },
-                        CurrentCategory=category
+                            PagingInfo = new PagingInfo
+                            {
+                                CurrentPage= productPage,
+                                ItemsPerPage=PageSize,
+                                TotalItems = repository.Products.Count()
+                            },
+                            CurrentCategory=category
             });
         }
     }
