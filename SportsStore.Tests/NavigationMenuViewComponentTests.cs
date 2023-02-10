@@ -43,5 +43,11 @@ namespace SportsStore.Tests
                 "Plums"
             }, result));
         }
+
+        [Fact]
+        public void Indicates_Selected_Category()
+        {
+
+        }
     }
 }
