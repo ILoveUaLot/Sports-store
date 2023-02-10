@@ -65,6 +65,10 @@ namespace SportsStore.Tests
                 }
             };
             target.RouteData.Values["category"] = categoryToSelect;
+
+            //Act
+            string? result = (string?)((target.Invoke() as ViewViewComponentResult)?
+                                        .ViewData?.Model as CategoryRouteDataModel)?.RoutePath ?? String.Empty;
         }
     }
 }
