@@ -137,5 +137,11 @@ public class HomeControllerTest
         Func<ViewResult, ProductsListViewModel?> GetModel = result =>
                                                         result?.ViewData?.Model 
                                                         as ProductsListViewModel;
+        //Action
+        int? res1 = GetModel(target.Index("Cat1"))?.PagingInfo.TotalItems;
+        int? res2 = GetModel(target.Index("Cat2"))?.PagingInfo.TotalItems;
+        int? res3 = GetModel(target.Index("Cat3"))?.PagingInfo.TotalItems;
+        int? resAll = GetModel(target.Index(null))?.PagingInfo.TotalItems;
+        
     }
 }
