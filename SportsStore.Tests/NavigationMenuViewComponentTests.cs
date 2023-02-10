@@ -69,6 +69,8 @@ namespace SportsStore.Tests
             //Act
             string? result = (string?)((target.Invoke() as ViewViewComponentResult)?
                                         .ViewData?.Model as CategoryRouteDataModel)?.RoutePath ?? String.Empty;
+            //Assert
+            Assert.Equal(categoryToSelect, result);
         }
     }
 }
