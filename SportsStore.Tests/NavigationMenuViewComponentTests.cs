@@ -4,6 +4,7 @@ using Moq;
 using SportsStore.Components;
 using SportsStore.Controllers;
 using SportsStore.Models;
+using SportsStore.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,9 @@ namespace SportsStore.Tests
             NavigationMenuViewComponent target = new NavigationMenuViewComponent(mock.Object);
 
             //Act
-            string[] result = ((IEnumerable<string>?)(target.Invoke() as ViewViewComponentResult)?
-                                .ViewData?.Model ?? Enumerable.Empty<string>()).ToArray();
+            string[] result = (((target.Invoke() as ViewViewComponentResult)?
+                                .ViewData?.Model as CategoryRouteDataModel)?.Categories
+                                ?? Enumerable.Empty<string>()).ToArray();
             //Assert
             Assert.True(Enumerable.SequenceEqual(new string[]
             {
