@@ -142,6 +142,11 @@ public class HomeControllerTest
         int? res2 = GetModel(target.Index("Cat2"))?.PagingInfo.TotalItems;
         int? res3 = GetModel(target.Index("Cat3"))?.PagingInfo.TotalItems;
         int? resAll = GetModel(target.Index(null))?.PagingInfo.TotalItems;
-        
+
+        //Assert
+        Assert.Equal(2, res1);
+        Assert.Equal(2, res2);
+        Assert.Equal(1, res3);
+        Assert.Equal(5, resAll);
     }
 }
