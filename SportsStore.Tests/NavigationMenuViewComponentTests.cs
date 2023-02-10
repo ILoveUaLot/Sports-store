@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewComponents;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Moq;
 using SportsStore.Components;
@@ -47,7 +48,23 @@ namespace SportsStore.Tests
         [Fact]
         public void Indicates_Selected_Category()
         {
+            //Arrange
+            string categoryToSelect = "Apple";
+            Mock<IStoreRepository> mock = new Mock<IStoreRepository>();
+            mock.Setup(m => m.Products).Returns((new Product[] {
+            new Product {ProductID = 1, Name = "P1", Category = "Apples"},
+            new Product {ProductID = 4, Name = "P2", Category = "Oranges"},
+            }).AsQueryable<Product>());
 
+            NavigationMenuViewComponent target = new NavigationMenuViewComponent(mock.Object);
+            target.ViewComponentContext = new ViewComponentContext
+            {
+                ViewContext = new ViewContext
+                {
+                    RouteData = new Microsoft.AspNetCore.Routing.RouteData()
+                }
+            };
+            target.RouteData.Values["category"] = categoryToSelect;
         }
     }
 }
