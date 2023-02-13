@@ -1,12 +1,13 @@
-using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using SportsStore.Models;
-using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddRazorPages();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StoreDbContext>(opts =>
 {
@@ -27,6 +28,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseSession();
 
 app.MapControllerRoute("catpage",
     "{category}/Page{ProductPage:int}",
