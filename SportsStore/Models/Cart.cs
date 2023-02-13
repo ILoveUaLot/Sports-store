@@ -21,6 +21,10 @@
                 line.Quantity += quantity;
             }
         }
+        public void RemoveLine(Product product)
+        {
+            Lines.RemoveAll(l =>l.Product.ProductID == product.ProductID);
+        }
     }
 
     public class CartLine
