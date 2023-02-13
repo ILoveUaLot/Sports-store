@@ -25,6 +25,11 @@
         {
             Lines.RemoveAll(l =>l.Product.ProductID == product.ProductID);
         }
+
+        public decimal ComputeTotalValue()
+        {
+            return Lines.Sum(e => e.Product.Price * e.Quantity);
+        }
     }
 
     public class CartLine
