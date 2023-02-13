@@ -30,6 +30,11 @@
         {
             return Lines.Sum(e => e.Product.Price * e.Quantity);
         }
+
+        public void Clear()
+        {
+            Lines.Clear();
+        }
     }
 
     public class CartLine
