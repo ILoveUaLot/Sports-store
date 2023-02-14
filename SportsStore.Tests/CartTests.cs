@@ -45,7 +45,9 @@ namespace SportsStore.Tests
             cart.RemoveLine(p1);
             cart.RemoveLine(p2);
             
-
+            //Assert
+            Assert.Empty(cart.Lines.Where(c=>c.Product == p1 && c.Product==p2));
+            Assert.Equal(1,cart.Lines.Count());
         }
     }
 }
