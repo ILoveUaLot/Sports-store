@@ -21,7 +21,10 @@ namespace SportsStore.Tests
             target.AddItem(p2, 1);
             CartLine[] results = target.Lines.ToArray();
 
-            //
+            //Assert
+            Assert.Equal(2, results.Length);
+            Assert.Equal(p1, results[0].Product);
+            Assert.Equal(p2, results[1].Product);
         }
     }
 }
