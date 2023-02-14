@@ -1,6 +1,4 @@
 ﻿using Xunit;
-using System.Linq;
-using Moq;
 using SportsStore.Models;
 namespace SportsStore.Tests
 {
