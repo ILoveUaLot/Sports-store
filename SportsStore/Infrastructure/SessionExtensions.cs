@@ -8,5 +8,11 @@ namespace SportsStore.Infrastructure
         {
             session.SetString(key, JsonSerializer.Serialize(value));
         }
+
+        public static T? GetJson<T> (this ISession session, string key)
+        {
+            var SessionData = session.GetString(key);
+            return SessionData == null ? default(T) : JsonSerializer.Deserialize<T>(SessionData);
+        }
     }
 }
