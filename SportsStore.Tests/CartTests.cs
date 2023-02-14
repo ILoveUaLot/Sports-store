@@ -83,8 +83,10 @@ namespace SportsStore.Tests
             Cart target = new Cart();
             target.AddItem(p1, 4);
             target.AddItem(p2, 1);
-            
+
             //Act
+            target.Clear();
+
         }
     }
 }
