@@ -69,6 +69,22 @@ namespace SportsStore.Tests
             decimal result = cart.ComputeTotalValue();
 
             //Assert
+            Assert.Equal(120M, result);
+        }
+
+        [Fact]
+        public void Can_Clear()
+        {
+            //Arrange - create some test products
+            Product p1 = new Product { ProductID = 1, Name = "P1" };
+            Product p2 = new Product { ProductID = 2, Name = "P2" };
+
+            //Arrange - create a new cart
+            Cart target = new Cart();
+            target.AddItem(p1, 4);
+            target.AddItem(p2, 1);
+            
+            //Act
         }
     }
 }
