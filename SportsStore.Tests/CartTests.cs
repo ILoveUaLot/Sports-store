@@ -87,6 +87,8 @@ namespace SportsStore.Tests
             //Act
             target.Clear();
 
+            //Assert
+            Assert.Empty(target.Lines);
         }
     }
 }
