@@ -1,6 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Routing;
 using Moq;
 using SportsStore.Models;
+using SportsStore.Pages;
 using System.Text;
 using System.Text.Json;
 using Xunit;
@@ -37,6 +41,16 @@ namespace SportsStore.Tests
             mockContext.Setup(c=> c.Session).Returns(mockSession.Object);
 
             //Action
+            CartModel cartModel = new CartModel(mock.Object)
+            {
+                PageContext = new PageContext(new ActionContext
+                {
+                    HttpContext = mockContext.Object,
+                    RouteData = new RouteData(),
+                    ActionDescriptor = new PageActionDescriptor()
+                })
+            };
+            cartModel.OnGet("myUrl");
         }
     }
 }
