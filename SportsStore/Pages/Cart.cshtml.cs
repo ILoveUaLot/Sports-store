@@ -1,12 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using SportsStore.Infrastructure;
+using SportsStore.Models;
 
 namespace SportsStore.Pages
 {
     public class CartModel : PageModel
     {
-        public void OnGet()
+        private IStoreRepository repository;
+        public CartModel(IStoreRepository repository)
         {
+            this.repository = repository;
+        }
+        public Cart? cart { get; set; }
+        public string ReturnUrl { get; set; } = "/";
+
+        public void OnGet(string returnUrl)
+        {
+            ReturnUrl= returnUrl ?? "/";
+            cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+        }
+
+        public IActionResult OnPost(long productID, string returnUrl)
+        {
+            Product? product = repository.Products
+                                .FirstOrDefault(p=>p.ProductID== productID);
+            if(product != null)
+            {
+                cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+                cart.AddItem(product, 1);
+                HttpContext.Session.SetJson("cart", cart);
+            }
+            return RedirectToPage(new { returnUrl = returnUrl });
         }
     }
 }
