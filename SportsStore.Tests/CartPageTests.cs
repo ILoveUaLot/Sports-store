@@ -33,7 +33,7 @@ namespace SportsStore.Tests
             TestCart.AddItem(p2, 1);
             //Create mock page context and session
             Mock<ISession> mockSession = new Mock<ISession>();
-            byte[] data =
+            byte[]? data =
                 Encoding.UTF8.GetBytes(JsonSerializer.Serialize(TestCart));
             mockSession.Setup(c => c.TryGetValue(It.IsAny<string>(), out data));
 
