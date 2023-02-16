@@ -38,7 +38,7 @@ namespace SportsStore.Tests
             mockSession.Setup(c => c.TryGetValue(It.IsAny<string>(), out data));
 
             Mock<HttpContext> mockContext = new Mock<HttpContext>();
-            mockContext.Setup(c=> c.Session).Returns(mockSession.Object);
+            mockContext.Setup(c => c.Session).Returns(mockSession.Object);
 
             //Action
             CartModel cartModel = new CartModel(mock.Object)
@@ -55,6 +55,39 @@ namespace SportsStore.Tests
             //Assert
             Assert.Equal(2, cartModel?.cart?.Lines.Count);
             Assert.Equal("myUrl", cartModel?.ReturnUrl);
+        }
+
+        [Fact]
+        public void Can_Update_Cart()
+        {
+            // Arrange
+            // - create a mock repository
+            Mock<IStoreRepository> mockRepo = new Mock<IStoreRepository>();
+            mockRepo.Setup(m => m.Products).Returns((new Product[] {
+                new Product { ProductID = 1, Name = "P1" }
+                }).AsQueryable<Product>());
+            Cart? testCart = new Cart();
+            Mock<ISession> mockSession = new Mock<ISession>();
+            mockSession.Setup(s => s.Set(It.IsAny<string>(), It.IsAny<byte[]>()))
+            .Callback<string, byte[]>((key, val) =>
+            {
+                testCart =
+                    JsonSerializer.Deserialize<Cart>(Encoding.UTF8.
+                    GetString(val));
+            });
+            Mock<HttpContext> mockContext = new Mock<HttpContext>();
+            mockContext.SetupGet(c => c.Session).Returns(mockSession.Object);
+            // Action
+            CartModel cartModel = new CartModel(mockRepo.Object)
+            {
+                PageContext = new PageContext(new ActionContext
+                {
+                    HttpContext = mockContext.Object,
+                    RouteData = new RouteData(),
+                    ActionDescriptor = new PageActionDescriptor()
+                })
+            };
+            cartModel.OnPost(1, "myUrl");
         }
     }
 }
