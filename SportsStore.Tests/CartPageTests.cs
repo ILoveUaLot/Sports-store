@@ -51,6 +51,10 @@ namespace SportsStore.Tests
                 })
             };
             cartModel.OnGet("myUrl");
+
+            //Assert
+            Assert.Equal(2, cartModel?.cart?.Lines.Count);
+            Assert.Equal("myUrl", cartModel?.ReturnUrl);
         }
     }
 }
