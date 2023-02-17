@@ -13,7 +13,7 @@ namespace SportsStore.Pages
             this.repository = repository;
             cart = cartService;
         }
-        public Cart? cart { get; set; }
+        public Cart cart { get; set; }
         public string ReturnUrl { get; set; } = "/";
 
         public void OnGet(string returnUrl)
