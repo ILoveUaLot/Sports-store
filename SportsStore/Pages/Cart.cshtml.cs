@@ -19,7 +19,7 @@ namespace SportsStore.Pages
         public void OnGet(string returnUrl)
         {
             ReturnUrl= returnUrl ?? "/";
-            cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
+            //cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
         }
 
         public IActionResult OnPost(long productID, string returnUrl)
