@@ -25,12 +25,10 @@ namespace SportsStore.Pages
         public IActionResult OnPost(long productID, string returnUrl)
         {
             Product? product = repository.Products
-                                .FirstOrDefault(p=>p.ProductID== productID);
+                .FirstOrDefault(p=>p.ProductID== productID);
             if(product != null)
             {
-                cart = HttpContext.Session.GetJson<Cart>("cart") ?? new Cart();
                 cart.AddItem(product, 1);
-                HttpContext.Session.SetJson("cart", cart);
             }
             return RedirectToPage(new { returnUrl = returnUrl });
         }
