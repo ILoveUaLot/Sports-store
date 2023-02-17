@@ -31,29 +31,13 @@ namespace SportsStore.Tests
             Cart TestCart = new Cart();
             TestCart.AddItem(p1, 2);
             TestCart.AddItem(p2, 1);
-            //Create mock page context and session
-            Mock<ISession> mockSession = new Mock<ISession>();
-            byte[]? data =
-                Encoding.UTF8.GetBytes(JsonSerializer.Serialize(TestCart));
-            mockSession.Setup(c => c.TryGetValue(It.IsAny<string>(), out data));
-
-            Mock<HttpContext> mockContext = new Mock<HttpContext>();
-            mockContext.Setup(c => c.Session).Returns(mockSession.Object);
 
             //Action
-            CartModel cartModel = new CartModel(mock.Object)
-            {
-                PageContext = new PageContext(new ActionContext
-                {
-                    HttpContext = mockContext.Object,
-                    RouteData = new RouteData(),
-                    ActionDescriptor = new PageActionDescriptor()
-                })
-            };
+            CartModel cartModel = new CartModel(mock.Object, TestCart);
             cartModel.OnGet("myUrl");
 
             //Assert
-            Assert.Equal(2, cartModel?.cart?.Lines.Count);
+            Assert.Equal(2, cartModel?.cart.Lines.Count());
             Assert.Equal("myUrl", cartModel?.ReturnUrl);
         }
 
