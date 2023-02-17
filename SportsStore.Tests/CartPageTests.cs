@@ -51,27 +51,15 @@ namespace SportsStore.Tests
                 new Product { ProductID = 1, Name = "P1" }
                 }).AsQueryable<Product>());
             Cart? testCart = new Cart();
-            Mock<ISession> mockSession = new Mock<ISession>();
-            mockSession.Setup(s => s.Set(It.IsAny<string>(), It.IsAny<byte[]>()))
-            .Callback<string, byte[]>((key, val) =>
-            {
-                testCart =
-                    JsonSerializer.Deserialize<Cart>(Encoding.UTF8.
-                    GetString(val));
-            });
-            Mock<HttpContext> mockContext = new Mock<HttpContext>();
-            mockContext.SetupGet(c => c.Session).Returns(mockSession.Object);
+
             // Action
-            CartModel cartModel = new CartModel(mockRepo.Object)
-            {
-                PageContext = new PageContext(new ActionContext
-                {
-                    HttpContext = mockContext.Object,
-                    RouteData = new RouteData(),
-                    ActionDescriptor = new PageActionDescriptor()
-                })
-            };
+            CartModel cartModel = new CartModel(mockRepo.Object, testCart);
             cartModel.OnPost(1, "myUrl");
+
+            //Assert
+            Assert.Single(testCart.Lines);
+            Assert.Equal("P1", testCart.Lines.First().Product.Name);
+            Assert.Equal(1, testCart.Lines.First().Product.ProductID);
         }
     }
 }
