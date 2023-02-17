@@ -8,9 +8,10 @@ namespace SportsStore.Pages
     public class CartModel : PageModel
     {
         private IStoreRepository repository;
-        public CartModel(IStoreRepository repository)
+        public CartModel(IStoreRepository repository, Cart cartService)
         {
             this.repository = repository;
+            cart = cartService;
         }
         public Cart? cart { get; set; }
         public string ReturnUrl { get; set; } = "/";
